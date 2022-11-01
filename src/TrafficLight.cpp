@@ -44,10 +44,12 @@ void MessageQueue<T>::send(T &&msg)
 /* Implementation of class "TrafficLight" */
 
 
-TrafficLight::TrafficLight()
+TrafficLight::TrafficLight(): TrafficObject()
 {
-    _currentPhase = TrafficLightPhase::red;
+  _currentPhase = TrafficLightPhase::red;
+  _messages= std::make_shared<MessageQueue<TrafficLightPhase>>();
 }
+TrafficLight::~TrafficLight(){ }
 
 void TrafficLight::waitForGreen()
 {
